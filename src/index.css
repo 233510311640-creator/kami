@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-black: #050505;
+  --color-brand-white: #ffffff;
+  --color-brand-gray: #333333;
+  --color-brand-line: rgba(255, 255, 255, 0.15);
+
+  --animate-scanline: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-black text-brand-white font-sans antialiased overflow-x-hidden selection:bg-brand-white selection:text-brand-black;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-sans font-extrabold tracking-tighter;
+  }
+}
+
+@layer utilities {
+  .border-line {
+    @apply border-brand-line/15;
+  }
+
+  .halftone {
+    background-image: radial-gradient(#333 1px, transparent 0);
+    background-size: 4px 4px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+  }
+}
